@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Alura.Adopet.Console
 {
+    [ComandosDocumentacao(documentacao: "show   <arquivo> comando que exibe no terminal o conteúdo do arquivo importado.", instrucao: "show")]
     internal class Mostrar
     {
         public void MostrarPets(string caminhoArquivoASerExibido)

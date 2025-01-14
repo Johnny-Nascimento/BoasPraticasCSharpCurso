@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Alura.Adopet.Console
 {
+    [ComandosDocumentacao(documentacao: "import <arquivo> comando que realiza a importação do arquivo de pets.", instrucao:"import")]
     internal class Importacao
     {
         HttpClient client;

@@ -32,7 +32,7 @@ namespace Exercicios
             }
         }
 
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             Console.WriteLine("Digite o primeiro número: ");
             int numero1 = int.Parse(Console.ReadLine());

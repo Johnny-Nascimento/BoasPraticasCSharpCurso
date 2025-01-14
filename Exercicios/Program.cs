@@ -43,7 +43,7 @@ namespace Exercicios
 
         static void Main(string[] args)
         {
-            
+            Console.ReadKey();
         }
     }
 }
