@@ -48,7 +48,7 @@ namespace Alura.Adopet.API.Dados.Repository
             return _context.Clientes.Where(a => a.Id == id).FirstOrDefault();
         }
 
-        public List<Cliente> ObterTodos()
+        public IEnumerable<Cliente> ObterTodos()
         {
             return _context.Clientes.ToList();
         }

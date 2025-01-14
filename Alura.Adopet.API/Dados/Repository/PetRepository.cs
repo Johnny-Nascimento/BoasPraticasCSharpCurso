@@ -48,7 +48,7 @@ namespace Alura.Adopet.API.Dados.Repository
             return _context.Pets.Where(a => a.Id == id).FirstOrDefault();
         }
 
-        public async Task<List<Pet>> ObterTodos()
+        public async Task<IEnumerable<Pet>> ObterTodos()
         {
             return await _context.Pets.Include(prop=>prop.Proprietario).ToListAsync();
         }

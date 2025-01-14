@@ -26,11 +26,8 @@ try
         break;
 
         case "list":
-            var pets = await ListPetsAsync();
-            foreach(var pet in pets)
-            {
-                Console.WriteLine(pet);
-            }
+            Lista lista = new Lista();
+            await lista.ListaDadosPetAPIAsync();
         break;
 
         default:
