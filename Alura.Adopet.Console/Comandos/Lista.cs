@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Alura.Adopet.Console.Modelos;
+using Alura.Adopet.Console.Serviço;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -6,37 +8,27 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alura.Adopet.Console
+namespace Alura.Adopet.Console.Comandos
 {
     [ComandosDocumentacao(documentacao: "list comando que exibe no terminal o conteúdo cadastrado na base dae dados da AdoPet.", instrucao: "list")]
     internal class Lista
     {
-        HttpClient client;
+        HttpClientPet client;
 
         public Lista()
         {
-            client = ConfiguraHttpClient("http://localhost:5057");
+            client = new HttpClientPet("http://localhost:5057");
         }
 
         public async Task ListaDadosPetAPIAsync()
         {
-            HttpResponseMessage response = await client.GetAsync("pet/list");
+            HttpResponseMessage response = await client.HttpClient.GetAsync("pet/list");
             var pets = await response.Content.ReadFromJsonAsync<IEnumerable<Pet>>();
 
             foreach (var pet in pets)
             {
                 System.Console.WriteLine(pet);
             }
-        }
-
-        HttpClient ConfiguraHttpClient(string url)
-        {
-            HttpClient _client = new HttpClient();
-            _client.DefaultRequestHeaders.Accept.Clear();
-            _client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            _client.BaseAddress = new Uri(url);
-            return _client;
         }
     }
 }

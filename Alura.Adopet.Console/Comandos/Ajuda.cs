@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alura.Adopet.Console
+namespace Alura.Adopet.Console.Comandos
 {
     [ComandosDocumentacao(documentacao: "help [comando] para obter mais informações sobre um comando.\nhelp <NOME DO COMANDO> para acessar a ajuda de um comando especifico", instrucao: "help")]
     internal class Ajuda

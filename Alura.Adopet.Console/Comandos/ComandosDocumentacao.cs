@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alura.Adopet.Console
+namespace Alura.Adopet.Console.Comandos
 {
     [AttributeUsage(AttributeTargets.Class)]
-    internal class ComandosDocumentacao : System.Attribute
+    internal class ComandosDocumentacao : Attribute
     {
         public ComandosDocumentacao(string documentacao, string instrucao)
         {
