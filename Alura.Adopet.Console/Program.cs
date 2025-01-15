@@ -4,32 +4,21 @@ using Alura.Adopet.Console.Modelos;
 try
 {
     string comandoASerExecutado = args[0].Trim();
-    switch (comandoASerExecutado)
+    Dictionary<string, IComando> comandosDoSistema = new()
     {
-        case "import":
-            Importacao importacao = new Importacao();
-            await importacao.ExecutarAsync(args);
-        break;
+        { "import", new Importacao()},
+        { "help", new Ajuda()},
+        { "show", new Mostrar()},
+        { "list", new Lista()}
+    };
 
-        case "help":
-            Ajuda ajuda = new Ajuda();
-            await ajuda.ExecutarAsync(args);
-        break;
-
-        case "show":
-            Mostrar mostrar = new Mostrar();
-            await mostrar.ExecutarAsync(args);
-        break;
-
-        case "list":
-            Lista lista = new Lista();
-            await lista.ExecutarAsync(args);
-        break;
-
-        default:
-            Console.WriteLine("Comando inválido!");
-        break;
+    IComando? comando;
+    if (comandosDoSistema.TryGetValue(comandoASerExecutado, out comando))
+    {
+        await comando.ExecutarAsync(args);
     }
+    else
+        Console.WriteLine("Comando inválido!");
 }
 catch (Exception ex)
 {
