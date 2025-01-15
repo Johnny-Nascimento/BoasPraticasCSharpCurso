@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Alura.Adopet.Console.Comandos
 {
     [ComandosDocumentacao(documentacao: "list comando que exibe no terminal o conteúdo cadastrado na base dae dados da AdoPet.", instrucao: "list")]
-    internal class Lista
+    internal class Lista : IComando
     {
         HttpClientPet client;
 
@@ -20,7 +20,12 @@ namespace Alura.Adopet.Console.Comandos
             client = new HttpClientPet("http://localhost:5057");
         }
 
-        public async Task ListaDadosPetAPIAsync()
+        public async Task ExecutarAsync(string[] args)
+        {
+            await ListaDadosPetAPIAsync();
+        }
+
+        private async Task ListaDadosPetAPIAsync()
         {
             HttpResponseMessage response = await client.HttpClient.GetAsync("pet/list");
             var pets = await response.Content.ReadFromJsonAsync<IEnumerable<Pet>>();

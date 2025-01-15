@@ -8,7 +8,7 @@ try
     {
         case "import":
             Importacao importacao = new Importacao();
-            await importacao.FazImportacaoAsync(caminhoDoArquivoASerImportado:args[1]);
+            await importacao.ExecutarAsync(args);
         break;
 
         case "help":
@@ -18,12 +18,12 @@ try
 
         case "show":
             Mostrar mostrar = new Mostrar();
-            mostrar.MostrarPets(caminhoArquivoASerExibido:args[1]);
+            await mostrar.ExecutarAsync(args);
         break;
 
         case "list":
             Lista lista = new Lista();
-            await lista.ListaDadosPetAPIAsync();
+            await lista.ExecutarAsync(args);
         break;
 
         default:

@@ -9,9 +9,16 @@ using System.Threading.Tasks;
 namespace Alura.Adopet.Console.Comandos
 {
     [ComandosDocumentacao(documentacao: "show   <arquivo> comando que exibe no terminal o conteúdo do arquivo importado.", instrucao: "show")]
-    internal class Mostrar
+    internal class Mostrar : IComando
     {
-        public void MostrarPets(string caminhoArquivoASerExibido)
+        public Task ExecutarAsync(string[] args)
+        {
+            MostrarPets(args[1]);
+
+            return Task.CompletedTask;
+        }
+
+        private void MostrarPets(string caminhoArquivoASerExibido)
         {
             LeitorDeArquivo leitorDeArquivo = new LeitorDeArquivo();
             List<Pet> listaDePet = leitorDeArquivo.RealizaLeitura(caminhoArquivoASerExibido);

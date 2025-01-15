@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Alura.Adopet.Console.Comandos
 {
     [ComandosDocumentacao(documentacao: "help [comando] para obter mais informações sobre um comando.\nhelp <NOME DO COMANDO> para acessar a ajuda de um comando especifico", instrucao: "help")]
-    internal class Ajuda
+    internal class Ajuda : IComando
     {
         private Dictionary<string, ComandosDocumentacao> ComandosDocumentacao;
         public Ajuda()
@@ -18,6 +18,13 @@ namespace Alura.Adopet.Console.Comandos
                 .SelectMany(t => t.GetCustomAttributes<ComandosDocumentacao>()!)
                 .ToDictionary(d => d.Instrucao, d => d);
 
+        }
+
+        public Task ExecutarAsync(string[] args)
+        {
+            MostraInformacoesDeAjuda(opcaoDeAjuda:args[1]);
+
+            return Task.CompletedTask;
         }
 
         public void MostraInformacoesDeAjuda(string opcaoDeAjuda)
