@@ -13,7 +13,7 @@ try
 
         case "help":
             Ajuda ajuda = new Ajuda();
-            ajuda.MostraInformacoesDeAjuda(opcaoDeAjuda:args.Length == 2 ? args[1] : string.Empty);
+            await ajuda.ExecutarAsync(args);
         break;
 
         case "show":

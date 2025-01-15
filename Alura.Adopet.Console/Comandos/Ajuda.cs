@@ -22,12 +22,12 @@ namespace Alura.Adopet.Console.Comandos
 
         public Task ExecutarAsync(string[] args)
         {
-            MostraInformacoesDeAjuda(opcaoDeAjuda:args[1]);
+            MostraInformacoesDeAjuda(opcaoDeAjuda: args.Length == 2 ? args[1] : string.Empty);
 
             return Task.CompletedTask;
         }
 
-        public void MostraInformacoesDeAjuda(string opcaoDeAjuda)
+        private void MostraInformacoesDeAjuda(string opcaoDeAjuda)
         {
             System.Console.WriteLine("Lista de comandos.");
 
