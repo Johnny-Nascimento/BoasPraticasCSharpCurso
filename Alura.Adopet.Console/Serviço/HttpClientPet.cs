@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Alura.Adopet.Console.Serviço
 {
-    internal class HttpClientPet
+    public class HttpClientPet
     {
         public HttpClient HttpClient { get; set; }
 
-        public HttpClientPet(string url)
+        public HttpClientPet(string uri)
         {
-            HttpClient = ConfiguraHttpClient(url);
+            HttpClient = ConfiguraHttpClient(uri);
         }
 
         public Task<HttpResponseMessage> CreatePetAsync(Pet pet)
@@ -25,6 +25,19 @@ namespace Alura.Adopet.Console.Serviço
             {
                 return HttpClient.PostAsJsonAsync("pet/add", pet);
             }
+        }
+
+        public async Task<IEnumerable<Pet>> ListaDadosPetAPIAsync()
+        {
+            HttpResponseMessage response = await HttpClient.GetAsync("pet/list");
+            var pets = await response.Content.ReadFromJsonAsync<IEnumerable<Pet>>();
+
+            foreach (var pet in pets)
+            {
+                System.Console.WriteLine(pet);
+            }
+
+            return pets;
         }
 
         private HttpClient ConfiguraHttpClient(string url)

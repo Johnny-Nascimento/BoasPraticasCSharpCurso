@@ -17,13 +17,13 @@ namespace Alura.Adopet.Console.Util
             {
                 while (!sr.EndOfStream)
                 {
-                    // separa linha usando ponto e vírgula
-                    string[] propriedades = sr.ReadLine().Split(';');
-                    // cria objeto Pet a partir da separação
-                    Pet pet = new Pet(Guid.Parse(propriedades[0]),
-                      propriedades[1],
-                      TipoPet.Cachorro
-                     );
+                    Pet? pet = sr.ReadLine().ConverteDoTexto();
+
+                    if (pet == null)
+                    {
+                        System.Console.WriteLine("Linha inválida");
+                        continue;
+                    }
 
                     System.Console.WriteLine(pet);
                     listaDePet.Add(pet);

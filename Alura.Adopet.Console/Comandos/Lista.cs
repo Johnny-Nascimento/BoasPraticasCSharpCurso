@@ -22,18 +22,7 @@ namespace Alura.Adopet.Console.Comandos
 
         public async Task ExecutarAsync(string[] args)
         {
-            await ListaDadosPetAPIAsync();
-        }
-
-        private async Task ListaDadosPetAPIAsync()
-        {
-            HttpResponseMessage response = await client.HttpClient.GetAsync("pet/list");
-            var pets = await response.Content.ReadFromJsonAsync<IEnumerable<Pet>>();
-
-            foreach (var pet in pets)
-            {
-                System.Console.WriteLine(pet);
-            }
+            await client.ListaDadosPetAPIAsync();
         }
     }
 }
