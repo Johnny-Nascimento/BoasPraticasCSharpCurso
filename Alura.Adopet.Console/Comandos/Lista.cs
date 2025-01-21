@@ -1,17 +1,9 @@
-﻿using Alura.Adopet.Console.Modelos;
-using Alura.Adopet.Console.Serviço;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Alura.Adopet.Console.Serviço;
 
 namespace Alura.Adopet.Console.Comandos
 {
     [ComandosDocumentacao(documentacao: "list comando que exibe no terminal o conteúdo cadastrado na base dae dados da AdoPet.", instrucao: "list")]
-    internal class Lista : IComando
+    public class Lista : IComando
     {
         HttpClientPet client;
 

@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Alura.Adopet.Console.Util;
 
 namespace Alura.Adopet.Console.Comandos
 {
     [ComandosDocumentacao(documentacao: "help [comando] para obter mais informações sobre um comando.\nhelp <NOME DO COMANDO> para acessar a ajuda de um comando especifico", instrucao: "help")]
-    internal class Ajuda : IComando
+    public class Ajuda : IComando
     {
         private Dictionary<string, ComandosDocumentacao> ComandosDocumentacao;
         public Ajuda()
         {
-            ComandosDocumentacao = Assembly.GetExecutingAssembly().GetTypes()
-                .Where(t => t.GetCustomAttributes<ComandosDocumentacao>().Any())
-                .SelectMany(t => t.GetCustomAttributes<ComandosDocumentacao>()!)
-                .ToDictionary(d => d.Instrucao, d => d);
+            PegadorDeDocumentacaoDeComandos pegaDocumentacaoComandos = new PegadorDeDocumentacaoDeComandos();
 
+            ComandosDocumentacao = pegaDocumentacaoComandos.PegaTodasAsDocumentacoes();
         }
 
         public Task ExecutarAsync(string[] args)

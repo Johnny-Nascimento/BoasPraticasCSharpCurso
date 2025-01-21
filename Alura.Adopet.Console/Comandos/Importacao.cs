@@ -1,18 +1,11 @@
 ﻿using Alura.Adopet.Console.Modelos;
 using Alura.Adopet.Console.Serviço;
 using Alura.Adopet.Console.Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Alura.Adopet.Console.Comandos
 {
     [ComandosDocumentacao(documentacao: "import <arquivo> comando que realiza a importação do arquivo de pets.", instrucao: "import")]
-    internal class Importacao : IComando
+    public class Importacao : IComando
     {
         HttpClientPet client;
 

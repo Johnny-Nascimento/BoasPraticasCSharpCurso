@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Alura.Adopet.Console.Comandos
 {
-    interface IComando
+    public interface IComando
     {
         public Task ExecutarAsync(string[] args);
     }

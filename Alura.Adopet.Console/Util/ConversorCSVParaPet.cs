@@ -16,12 +16,20 @@ namespace Alura.Adopet.Console.Util
 
             string[] propriedades = linha.Split(';');
 
-            if (propriedades.Length < 2)
+            if (propriedades.Length < 3)
                 return null;
 
-            return new Pet(Guid.Parse(propriedades[0]),
+            Guid guid = new Guid();
+            if (!Guid.TryParse(propriedades[0], out guid))
+                return null;
+
+            TipoPet tipoPet = (TipoPet)Convert.ToInt32(propriedades[2]);
+            if (tipoPet >= TipoPet.Ultimo)
+                return null;
+
+            return new Pet(guid,
               propriedades[1],
-              TipoPet.Cachorro
+              tipoPet
              );
         }
     }
