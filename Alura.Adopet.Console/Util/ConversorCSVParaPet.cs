@@ -24,7 +24,7 @@ namespace Alura.Adopet.Console.Util
                 return null;
 
             TipoPet tipoPet = (TipoPet)Convert.ToInt32(propriedades[2]);
-            if (tipoPet >= TipoPet.Ultimo)
+            if (tipoPet >= TipoPet.Ultimo || tipoPet < TipoPet.Primeiro)
                 return null;
 
             return new Pet(guid,

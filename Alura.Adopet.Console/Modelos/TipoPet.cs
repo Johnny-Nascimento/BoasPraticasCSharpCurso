@@ -8,6 +8,7 @@ namespace Alura.Adopet.Console.Modelos
 {
     public enum TipoPet
     {
+        Primeiro,
         Gato,
         Cachorro,
         Ultimo
